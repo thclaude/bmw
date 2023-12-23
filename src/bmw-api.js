@@ -396,7 +396,7 @@ class BMWClientAPI {
         //"2022-09-01T00:00:00Z"
         const timezone = new Date().toTimeString().substring(12,17).match(/.{2,3}/g).join(":");
         // eadrax-suscs/v1/vehicles/sustainability?timezone=-05%3A00
-        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability?timezone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
+        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability?time-zone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
     }
     async tripHistory(vin, date=new Date(), offset=0, limit=100, groupByWeek=false) {
         //"2022-09-01T00:00:00Z"
@@ -404,13 +404,13 @@ class BMWClientAPI {
         // 11:40:00 GMT-0500 (Eastern Standard Time)
         const timezone = new Date().toTimeString().substring(12,17).match(/.{2,3}/g).join(":");
         // eadrax-suscs/v1/vehicles/sustainability/trips/history?date=2022-11&offset=0&limit=7&groupByWeek=true&timezone=-05%3A00
-        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability/trips/history?date=${startDate}&offset=${offset}&limit=${limit}&groupByWeek=${groupByWeek}&timezone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
+        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability/trips/history?date=${startDate}&offset=${offset}&limit=${limit}&groupByWeek=${groupByWeek}&time-zone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
     }
     async tripDetails(vin, sessionId) {
         // 11:40:00 GMT-0500 (Eastern Standard Time)
         const timezone = new Date().toTimeString().substring(12,17).match(/.{2,3}/g).join(":");
         // /eadrax-suscs/v1/vehicles/sustainability/trips/summary/69f095c8-e0aa-49e3-bfc7-5af05209240b?timezone=-05%3A00
-        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability/trips/summary/${sessionId}?timezone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
+        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability/trips/summary/${sessionId}?time-zone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
     }
     async tripStatistics(vin, date=new Date()) {
         //"2022-09-01T00:00:00Z"
@@ -418,7 +418,7 @@ class BMWClientAPI {
         // 11:40:00 GMT-0500 (Eastern Standard Time)
         const timezone = new Date().toTimeString().substring(12,17).match(/.{2,3}/g).join(":");
 
-        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability/trips/statistics?date=${startDate}&timezone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
+        return await this.get(`/eadrax-suscs/v1/vehicles/sustainability/trips/statistics?date=${startDate}&time-zone=${timezone}`, {"bmw-vin": vin, "x-gcid": "b4802a8d-d2eb-4518-b0bc-23b5cb32e0de"});
     }
 
     async stopCharging(vin) {
